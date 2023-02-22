@@ -40,7 +40,7 @@ values
 (8),(9),(10),(11),(12),(13),(14);
 insert into intern(mentor_id , person_id)
 values
-(8,1),(9,2),(10,3),(12,4),(13,5),(14,6),(11,7);
+(1,1),(2,2),(3,3),(5,4),(6,5),(7,6),(4,7);
 
 insert into category(category_name) values
 ('Database'),('Java'),('Web');
@@ -56,11 +56,11 @@ insert into course(course_name,c_id,company_id) values
 
 insert into course_enrolled(course_id,intern_id)
 values
-(1,22),(1,23),(1,24),(1,25),(1,26),
-(2,23),(2,25),(2,26),
-(3,28),(3,27),(3,26),
-(4,22),(4,25),
-(6,26),(7,26),(7,27),(1,27);
+(1,1),(1,2),(1,3),(1,4),(1,5),
+(2,2),(2,4),(2,5),
+(3,7),(3,5),(3,6),
+(4,1),(4,4),
+(6,5),(7,5),(7,6),(1,6);
 
 
 
