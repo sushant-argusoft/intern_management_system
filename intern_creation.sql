@@ -10,6 +10,7 @@ create table address(
 
     
 );
+create index address_idx on address( house_number, street_number , street_name , pin_code , city_name , country_name );
 
 create table company(
     name varchar(50) not null,
@@ -17,6 +18,7 @@ create table company(
     address_id int not null,
     foreign key (address_id) references address(address_id)
 );
+create index company_idx on company(name , address_id);
 
 create table person(
    
@@ -27,12 +29,14 @@ create table person(
     address_id int not null,
     foreign key (address_id) references address(address_id)
 );
+create index  person_idx on person(address_id , first_name , last_name , date_of_birth);
 
 create table mentor(
     mentor_id int primary key auto_increment,
     person_id int not null,
     foreign key (person_id) references person(person_id)
 );
+create index mentor_idx on mentor(person_id);
 create table intern(
     intern_id int primary key auto_increment,
     mentor_id int not null,
@@ -40,10 +44,12 @@ create table intern(
     foreign key (mentor_id) references mentor(mentor_id),
     foreign key (person_id) references person(person_id)
 );
+create index intern_idx on intern(person_id , mentor_id);
 create table category( 
     c_id int primary key auto_increment,
     category_name varchar(100) not null
 );
+create index category_idx on category(category_name);
 create table  course(
     course_id int primary key auto_increment,
     course_name varchar(100) not null,
@@ -52,9 +58,11 @@ create table  course(
     foreign key(c_id) references category(c_id),
     foreign key(company_id) references company(company_id)
 );
+create index course_idx on course(c_id , company_id , course_name );
 create table course_enrolled(
     course_id int not null,
     intern_id int not null,
     foreign key(course_id) references course(course_id),
     foreign key(intern_id) references intern(intern_id)
 );
+create index course_enrolled_idx on course_enrolled(course_id , intern_id);
